@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About – JEONG World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      opacity: 0.8;
+    }
+
+    /* Menü links oben – horizontal */
+    header {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      z-index: 20;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: lowercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+
+    nav li a {
+      opacity: 0.8;
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid transparent;
+      font-weight: 300;
+      transition: border-color 0.2s ease, font-weight 0.2s ease, opacity 0.2s ease;
+    }
+
+    nav li a:hover {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      opacity: 1;
+    }
+
+    /* Brand rechts oben */
+    .brand {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 20;
+      text-align: right;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 1rem;
+    }
+
+    .brand-latin {
+      font-weight: 500;
+      margin-bottom: 0.1rem;
+      font-size: 1rem;
+    }
+
+    .brand-hangul {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Hauptinhalt */
+    main {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1.5rem 6rem 1.5rem;
+    }
+
+    .content-wrapper {
+      max-width: 720px;
+      width: 100%;
+    }
+
+    h1 {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 2rem 0 0.75rem;
+    }
+
+    p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 1rem;
+    }
+
+    .accent {
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    .line-break {
+      height: 1px;
+      width: 60px;
+      background: rgba(255,255,255,0.35);
+      margin: 1.5rem 0 2rem;
+    }
+
+    /* Logo-Lockup unten */
+    footer.logo-lockup {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      text-align: center;
+    }
+
+    .logo-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      font-weight: 400;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      margin: 0 auto 0.5rem auto;
+    }
+
+    .logo-word {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        top: 1rem;
+        left: 1rem;
+        font-size: 0.75rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+      }
+
+      .brand {
+        top: 1rem;
+        right: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .brand-latin {
+        font-size: 0.9rem;
+      }
+
+      main {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        letter-spacing: 0.2em;
+      }
+
+      .logo-circle {
+        width: 54px;
+        height: 54px;
+        font-size: 1.5rem;
+      }
+
+      .logo-word {
+        font-size: 0.8rem;
+        letter-spacing: 0.32em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menü links oben -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">home</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="tickets.html">tickets</a></li>
+        <li><a href="contact.html">contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- JEONG rechts oben -->
+  <div class="brand">
+    <div class="brand-latin">JEONG</div>
+    <div class="brand-hangul">정</div>
+  </div>
+
+  <!-- Inhalt -->
+  <main>
+    <div class="content-wrapper">
+      <div class="subtitle">ABOUT</div>
+      <h1>JEONG WORLD</h1>
+      <div class="line-break"></div>
+
+      <h2>What JEONG means</h2>
+      <p>
+        <span class="accent">Jeong (정)</span> is a Korean word with no perfect translation.
+        It describes a deep sense of warmth, attachment and quiet loyalty that grows over time –
+        between people, between a guest and a place, between a community and its rituals.
+        Jeong is what remains after the meal is over: the feeling that you have been
+        genuinely cared for, that you belong, even if only for one evening.
+      </p>
+      <p>
+        In <span class="accent">JEONG WORLD</span>, this idea becomes the heart of a culinary project.
+        It is not only about serving beautiful plates, but about creating a subtle emotional bond
+        between Korean culinary heritage and European cultural life – beginning in Vienna and
+        unfolding across cities and continents.
+      </p>
+
+      <h2>A Korean fine dining encounter</h2>
+      <p>
+        JEONG WORLD curates intimate fine dining experiences with leading Korean chefs – some known
+        from Michelin-starred kitchens and contemporary culinary stages. Each edition brings
+        Korean cuisine to the table in a restrained, modern language: black porcelain,
+        precise plating, quiet movement, steam rising softly into the dark.
+      </p>
+      <p>
+        The dishes are rooted in recognisably Korean flavours – fermentation, depth, rice, broth,
+        kimchi, perilla, sesame – yet interpreted with the sensitivity of high gastronomy.
+        A reimagined <span class="accent">sundae</span> (Korean blood sausage), a lucid golden broth,
+        delicately structured banchan, fermented notes in dialogue with European ingredients:
+        every plate is a small, concentrated story of origin and transformation.
+      </p>
+
+      <h2>Culture, not just cuisine</h2>
+      <p>
+        JEONG WORLD is conceived as more than a dinner series. Each evening is a composed
+        experience in which food, sound, light and narrative are carefully aligned.
+        Korean culinary craft meets European classical and contemporary culture – music,
+        space, and storytelling woven into a single, unhurried sequence of courses.
+      </p>
+      <p>
+        The atmosphere is deliberately calm. No spectacle, no noise. Just the rhythm of
+        plating, the resonance of broth in a black bowl, the fine crackle of porcelain,
+        the quiet presence of other guests. It is an invitation to experience Korean
+        culture not as decoration, but as a living, precise and generous practice.
+      </p>
+
+      <h2>From Vienna to the world</h2>
+      <p>
+        The first editions of JEONG WORLD are hosted in Vienna – a city with its own
+        strong dining culture, imperial history and refined sense for ritual. From here,
+        JEONG WORLD is designed to travel: to other European capitals, and, in time,
+        back to Korea, where European chefs may in turn cook as guests.
+      </p>
+      <p>
+        At every stop, the aim remains the same: to cultivate <span class="accent">jeong</span> –
+        a lasting feeling of connection through food, care and shared time at the table.
+        JEONG WORLD is the space where Korean fine dining and European culture sit down
+        together, not to impress one another, but to listen.
+      </p>
+    </div>
+  </main>
+
+  <!-- Logo unten -->
+  <footer class="logo-lockup">
+    <div class="logo-circle">정</div>
+    <div class="logo-word">JEONG</div>
+  </footer>
+
+</body>
+</html>
