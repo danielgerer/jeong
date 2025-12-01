@@ -29,11 +29,7 @@
       text-decoration: none;
     }
 
-    a:hover {
-      opacity: 0.7;
-    }
-
-    /* Fixiertes Menü links oben */
+    /* Menü links oben – horizontal */
     header {
       position: fixed;
       top: 1.5rem;
@@ -47,12 +43,22 @@
     nav ul {
       list-style: none;
       display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
+      flex-direction: row;
+      gap: 1.5rem;
     }
 
     nav li a {
       opacity: 0.8;
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid transparent;
+      font-weight: 300;
+      transition: border-color 0.2s ease, font-weight 0.2s ease, opacity 0.2s ease;
+    }
+
+    nav li a:hover {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      opacity: 1;
     }
 
     /* Brand rechts oben */
@@ -64,12 +70,13 @@
       text-align: right;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     .brand-latin {
       font-weight: 500;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.1rem;
+      font-size: 1rem; /* minimal größer */
     }
 
     .brand-hangul {
@@ -100,7 +107,7 @@
       z-index: -1;
     }
 
-    /* Optional: leichte Verdunkelung über Videos */
+    /* leichte Verdunkelung über Videos für bessere Lesbarkeit */
     section.hero::before {
       content: "";
       position: absolute;
@@ -109,7 +116,7 @@
       z-index: -1;
     }
 
-    /* Unten mittig Logo-Lockup */
+    /* Logo-Lockup unten mittig */
     footer.logo-lockup {
       position: fixed;
       bottom: 2rem;
@@ -120,26 +127,26 @@
     }
 
     .logo-circle {
-      width: 80px;
-      height: 80px;
+      width: 60px;   /* etwas kleiner */
+      height: 60px;  /* etwas kleiner */
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.7);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.7rem; /* passend zum kleineren Kreis */
       font-weight: 400;
-      background: rgba(0,0,0,0.65);
+      background: rgba(0,0,0,0.7);
       backdrop-filter: blur(6px);
-      margin: 0 auto 0.6rem auto;
+      margin: 0 auto 0.5rem auto;
     }
 
     .logo-word {
       font-family: "Georgia", "Times New Roman", serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.35em;
+      font-size: 0.9rem;           /* eine Spur größer */
+      letter-spacing: 0.4em;
       text-transform: uppercase;
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
     /* Responsives Tuning */
@@ -150,21 +157,29 @@
         font-size: 0.75rem;
       }
 
+      nav ul {
+        gap: 1rem;
+      }
+
       .brand {
         top: 1rem;
         right: 1rem;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .brand-latin {
+        font-size: 0.9rem;
       }
 
       .logo-circle {
-        width: 64px;
-        height: 64px;
-        font-size: 1.6rem;
+        width: 54px;
+        height: 54px;
+        font-size: 1.5rem;
       }
 
       .logo-word {
-        font-size: 0.7rem;
-        letter-spacing: 0.25em;
+        font-size: 0.8rem;
+        letter-spacing: 0.32em;
       }
     }
 
@@ -195,22 +210,22 @@
     <div class="brand-hangul">정</div>
   </div>
 
-  <!-- Vollbild-Hintergründe: Scroll = Video wechselt -->
+  <!-- Vollbild-Hintergründe: Scroll = Video wechselt (kein JS nötig) -->
   <main>
     <section class="hero" id="home">
-      <video src="media/jeong-01.mp4" autoplay muted loop playsinline></video>
+      <video src="assets/video/bg-video1.mp4" autoplay muted loop playsinline></video>
     </section>
 
     <section class="hero">
-      <video src="media/jeong-02.mp4" autoplay muted loop playsinline></video>
+      <video src="assets/video/bg-video2.mp4" autoplay muted loop playsinline></video>
     </section>
 
     <section class="hero">
-      <video src="media/jeong-03.mp4" autoplay muted loop playsinline></video>
+      <video src="assets/video/bg-video3.mp4" autoplay muted loop playsinline></video>
     </section>
 
     <section class="hero">
-      <video src="media/jeong-04.mp4" autoplay muted loop playsinline></video>
+      <video src="assets/video/bg-video4.mp4" autoplay muted loop playsinline></video>
     </section>
   </main>
 
@@ -222,3 +237,5 @@
 
 </body>
 </html>
+
+
