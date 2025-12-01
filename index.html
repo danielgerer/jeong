@@ -12,69 +12,73 @@
       height: 100%;
       background: #000;
       color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-      overflow: hidden; /* kein sichtbares Scrollen */
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial;
     }
 
-    /* FIXES LAYOUT */
-    body {
+    /* Jeder Abschnitt ist FULLSCREEN und FIXED */
+    section.hero {
+      scroll-snap-align: start;
+      height: 100vh;
+      width: 100vw;
       position: relative;
-    }
-
-    /* Video-Layer: 4 Videos übereinander */
-    .video-layer {
-      position: fixed;
-      inset: 0;
       overflow: hidden;
-      z-index: -1;
     }
 
-    .video-layer video {
-      position: absolute;
+    section.hero video {
+      position: fixed;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.6s ease;
+      z-index: -2;
     }
 
-    .video-layer video.active {
+    /* Jede Hero-Sektion bekommt eine andere Z-Ebene → optisch wird umgeblättert */
+    #v1 { z-index: 1; }
+    #v2 { z-index: 2; }
+    #v3 { z-index: 3; }
+    #v4 { z-index: 4; }
+
+    /* Die Videos sollen NUR in ihrer eigenen Sektion sichtbar sein */
+    section.hero:not(:target) video {
+      opacity: 0;
+    }
+    section.hero:target video {
       opacity: 1;
     }
 
-    /* Menü links oben – horizontal */
+    /* Startzustand: erstes Video sichtbar */
+    #v1 video { opacity: 1; }
+
+    /* Menü links oben */
     header {
       position: fixed;
       top: 1.5rem;
       left: 1.5rem;
-      z-index: 20;
+      z-index: 999;
       font-size: 0.8rem;
       letter-spacing: 0.15em;
       text-transform: lowercase;
     }
-
     nav ul {
-      list-style: none;
       display: flex;
-      flex-direction: row;
       gap: 1.5rem;
+      list-style: none;
     }
-
-    nav li a {
-      opacity: 0.8;
-      padding-bottom: 0.2rem;
-      border-bottom: 1px solid transparent;
-      font-weight: 300;
-      transition: border-color 0.2s ease, font-weight 0.2s ease, opacity 0.2s ease;
-      text-decoration: none;
+    nav a {
       color: #fff;
+      text-decoration: none;
+      opacity: 0.8;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 0.2rem;
+      transition: 0.3s;
     }
-
-    nav li a:hover {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.9);
-      font-weight: 500;
+    nav a:hover {
       opacity: 1;
+      font-weight: 500;
+      border-bottom: 1px solid #fff;
     }
 
     /* Brand rechts oben */
@@ -82,23 +86,14 @@
       position: fixed;
       top: 1.5rem;
       right: 1.5rem;
-      z-index: 20;
+      z-index: 999;
       text-align: right;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       font-size: 1rem;
     }
-
-    .brand-latin {
-      font-weight: 500;
-      margin-bottom: 0.1rem;
-      font-size: 1rem;
-    }
-
-    .brand-hangul {
-      font-size: 0.9rem;
-      opacity: 0.85;
-    }
+    .brand-latin { font-size: 1rem; margin-bottom: 0.1rem; }
+    .brand-hangul { font-size: 0.9rem; opacity: 0.85; }
 
     /* Logo unten */
     footer.logo-lockup {
@@ -106,87 +101,42 @@
       bottom: 2rem;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 20;
+      z-index: 999;
       text-align: center;
     }
-
     .logo-circle {
       width: 60px;
       height: 60px;
+      border: 1px solid #fff;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.7);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.7rem;
-      font-weight: 400;
-      background: rgba(0,0,0,0.7);
       backdrop-filter: blur(6px);
-      margin: 0 auto 0.5rem auto;
+      background: rgba(0,0,0,0.6);
+      margin: 0 auto 0.5rem;
     }
-
     .logo-word {
-      font-family: "Georgia", "Times New Roman", serif;
+      font-family: Georgia, serif;
+      letter-spacing: 0.35em;
       font-size: 0.9rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
       opacity: 0.85;
     }
 
-    /* Optional etwas Overlay, damit Text besser lesbar ist */
-    .overlay-gradient {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(0,0,0,0.15), rgba(0,0,0,0.7));
-      z-index: -1;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        top: 1rem;
-        left: 1rem;
-        font-size: 0.75rem;
-      }
-      nav ul {
-        gap: 1rem;
-      }
-      .brand {
-        top: 1rem;
-        right: 1rem;
-        font-size: 0.9rem;
-      }
-      .brand-latin {
-        font-size: 0.9rem;
-      }
-      .logo-circle {
-        width: 54px;
-        height: 54px;
-        font-size: 1.5rem;
-      }
-      .logo-word {
-        font-size: 0.8rem;
-        letter-spacing: 0.32em;
-      }
+    /* Verhindert sichtbares Scrollen (optisch bleibt die Seite stehen) */
+    body::-webkit-scrollbar {
+      width: 0;
     }
   </style>
 </head>
 <body>
 
-  <!-- Video Layer -->
-  <div class="video-layer">
-    <video class="bg-video active" src="assets/video/bg-video1.mp4" autoplay muted loop playsinline></video>
-    <video class="bg-video" src="assets/video/bg-video2.mp4" autoplay muted loop playsinline></video>
-    <video class="bg-video" src="assets/video/bg-video3.mp4" autoplay muted loop playsinline></video>
-    <video class="bg-video" src="assets/video/bg-video4.mp4" autoplay muted loop playsinline></video>
-  </div>
-
-  <div class="overlay-gradient"></div>
-
-  <!-- Menü links oben -->
+  <!-- Menü -->
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">home</a></li>
+        <li><a href="#v1">home</a></li>
         <li><a href="about.html">about</a></li>
         <li><a href="tickets.html">tickets</a></li>
         <li><a href="contact.html">contact</a></li>
@@ -194,11 +144,28 @@
     </nav>
   </header>
 
-  <!-- JEONG rechts oben -->
+  <!-- JEONG -->
   <div class="brand">
     <div class="brand-latin">JEONG</div>
     <div class="brand-hangul">정</div>
   </div>
+
+  <!-- SECTIONS / Scrollblätter -->
+  <section id="v1" class="hero">
+    <video src="assets/video/bg-video1.mp4" autoplay muted loop playsinline></video>
+  </section>
+
+  <section id="v2" class="hero">
+    <video src="assets/video/bg-video2.mp4" autoplay muted loop playsinline></video>
+  </section>
+
+  <section id="v3" class="hero">
+    <video src="assets/video/bg-video3.mp4" autoplay muted loop playsinline></video>
+  </section>
+
+  <section id="v4" class="hero">
+    <video src="assets/video/bg-video4.mp4" autoplay muted loop playsinline></video>
+  </section>
 
   <!-- Logo unten -->
   <footer class="logo-lockup">
@@ -206,70 +173,5 @@
     <div class="logo-word">JEONG</div>
   </footer>
 
-  <!-- Minimaler Scroll-Controller -->
-  <script>
-    (function () {
-      const videos = document.querySelectorAll('.bg-video');
-      let current = 0;
-      let isThrottled = false;
-
-      function showVideo(index) {
-        videos.forEach((vid, i) => {
-          if (i === index) {
-            vid.classList.add('active');
-          } else {
-            vid.classList.remove('active');
-          }
-        });
-      }
-
-      function nextVideo() {
-        current = (current + 1) % videos.length;
-        showVideo(current);
-      }
-
-      function prevVideo() {
-        current = (current - 1 + videos.length) % videos.length;
-        showVideo(current);
-      }
-
-      function handleDelta(deltaY) {
-        if (isThrottled) return;
-        isThrottled = true;
-        setTimeout(() => { isThrottled = false; }, 700); // Wechsel nicht zu schnell
-
-        if (deltaY > 0) {
-          nextVideo();
-        } else if (deltaY < 0) {
-          prevVideo();
-        }
-      }
-
-      // Maus-Rad (Desktop)
-      window.addEventListener('wheel', (e) => {
-        handleDelta(e.deltaY);
-      }, { passive: true });
-
-      // Touch (Mobile)
-      let touchStartY = null;
-      window.addEventListener('touchstart', (e) => {
-        if (e.touches.length === 1) {
-          touchStartY = e.touches[0].clientY;
-        }
-      }, { passive: true });
-
-      window.addEventListener('touchend', (e) => {
-        if (touchStartY === null) return;
-        const touchEndY = e.changedTouches[0].clientY;
-        const deltaY = touchStartY - touchEndY;
-        if (Math.abs(deltaY) > 30) {
-          handleDelta(deltaY);
-        }
-        touchStartY = null;
-      }, { passive: true });
-    })();
-  </script>
 </body>
 </html>
-
-  
