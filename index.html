@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JEONG – World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    /* Grundlayout */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      opacity: 0.7;
+    }
+
+    /* Fixiertes Menü links oben */
+    header {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      z-index: 20;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: lowercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    nav li a {
+      opacity: 0.8;
+    }
+
+    /* Brand rechts oben */
+    .brand {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 20;
+      text-align: right;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .brand-latin {
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+
+    .brand-hangul {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Vollbild-Sektionen mit Video */
+    main {
+      width: 100%;
+    }
+
+    section.hero {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    section.hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: none; /* Videos in Farbe */
+      z-index: -1;
+    }
+
+    /* Optional: leichte Verdunkelung über Videos */
+    section.hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.15), rgba(0,0,0,0.65));
+      z-index: -1;
+    }
+
+    /* Unten mittig Logo-Lockup */
+    footer.logo-lockup {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      text-align: center;
+    }
+
+    .logo-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 400;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(6px);
+      margin: 0 auto 0.6rem auto;
+    }
+
+    .logo-word {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    /* Responsives Tuning */
+    @media (max-width: 768px) {
+      header {
+        top: 1rem;
+        left: 1rem;
+        font-size: 0.75rem;
+      }
+
+      .brand {
+        top: 1rem;
+        right: 1rem;
+        font-size: 0.8rem;
+      }
+
+      .logo-circle {
+        width: 64px;
+        height: 64px;
+        font-size: 1.6rem;
+      }
+
+      .logo-word {
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      video {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menü links oben -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">home</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="tickets.html">tickets</a></li>
+        <li><a href="contact.html">contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- JEONG rechts oben -->
+  <div class="brand">
+    <div class="brand-latin">JEONG</div>
+    <div class="brand-hangul">정</div>
+  </div>
+
+  <!-- Vollbild-Hintergründe: Scroll = Video wechselt -->
+  <main>
+    <section class="hero" id="home">
+      <video src="media/jeong-01.mp4" autoplay muted loop playsinline></video>
+    </section>
+
+    <section class="hero">
+      <video src="media/jeong-02.mp4" autoplay muted loop playsinline></video>
+    </section>
+
+    <section class="hero">
+      <video src="media/jeong-03.mp4" autoplay muted loop playsinline></video>
+    </section>
+
+    <section class="hero">
+      <video src="media/jeong-04.mp4" autoplay muted loop playsinline></video>
+    </section>
+  </main>
+
+  <!-- Logo-Lockup unten zentriert -->
+  <footer class="logo-lockup">
+    <div class="logo-circle">정</div>
+    <div class="logo-word">JEONG</div>
+  </footer>
+
+</body>
+</html>
