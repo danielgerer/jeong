@@ -25,7 +25,7 @@
       position: fixed;
       inset: 0;
       overflow: hidden;
-      z-index: -1;
+      z-index: 0; /* NICHT negativ, damit es sichtbar ist */
     }
 
     .video-layer video {
@@ -42,7 +42,7 @@
       position: fixed;
       inset: 0;
       background: radial-gradient(circle at center, rgba(0,0,0,0.15), rgba(0,0,0,0.7));
-      z-index: -1;
+      z-index: 1;
     }
 
     /* Menü links oben – horizontal */
